@@ -1,0 +1,1 @@
+export {addArrays} from './arrays'

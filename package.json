@@ -1,0 +1,33 @@
+{
+  "name": "gen-funcs",
+  "version": "1.0.0",
+  "description": "general functions",
+  "main": "index.js",
+  "jest": {
+    "testPathIgnorePatterns": [
+      "dist"
+    ],
+    "preset": "ts-jest"
+  },
+  "scripts": {
+    "test": "jest",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "Stratis Christodoulou",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^26.4.0",
+    "ts-jest": "^26.2.0",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stratis-vip/gen-funcs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stratis-vip/gen-funcs/issues"
+  },
+  "homepage": "https://github.com/stratis-vip/gen-funcs#readme"
+}
