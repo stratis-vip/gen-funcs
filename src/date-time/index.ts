@@ -1,15 +1,14 @@
 import {
   makeGMTtoLocalDate,
   dateArrayToYYYMMDD,
-  splitDates,
   splitYYYYMMDDDate,
 } from "./helpers"
-import cloneDeep from 'lodash.clonedeep'
+import cloneDeep from "lodash.clonedeep"
 import { JsonDateTime } from "api-general-classes"
 
 export function yyyymmdd(d?: Date): string {
   const localD = d ? cloneDeep(d) : new Date()
-  
+
   const ar = makeGMTtoLocalDate(localD)
   return dateArrayToYYYMMDD(ar)
 }
@@ -20,11 +19,8 @@ export function yyyymmdd(d?: Date): string {
  * @param d Η ημερομηνία που θα μετατραπεί (σε μορφή Date)
  */
 export const fromDateToJsonDT = (d?: Date): JsonDateTime => {
-  if (d === undefined) {
-    d = new Date()
-  }
-  const dateArray = makeGMTtoLocalDate(d)
-
+  const localDate = d ? new Date(d.getTime()) : new Date
+  const dateArray = makeGMTtoLocalDate(localDate)
   const year = dateArray[0] !== undefined ? dateArray[0] : 0
   const month = dateArray[1] !== undefined ? dateArray[1] : 0
   const day = dateArray[2] !== undefined ? dateArray[2] : 0
@@ -76,3 +72,4 @@ export const isValidDate: (d: string) => boolean = (d) => {
   }
   return false
 }
+

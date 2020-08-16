@@ -18,10 +18,8 @@ exports.yyyymmdd = yyyymmdd;
  * @param d Η ημερομηνία που θα μετατραπεί (σε μορφή Date)
  */
 exports.fromDateToJsonDT = (d) => {
-    if (d === undefined) {
-        d = new Date();
-    }
-    const dateArray = helpers_1.makeGMTtoLocalDate(d);
+    const localDate = d ? new Date(d.getTime()) : new Date;
+    const dateArray = helpers_1.makeGMTtoLocalDate(localDate);
     const year = dateArray[0] !== undefined ? dateArray[0] : 0;
     const month = dateArray[1] !== undefined ? dateArray[1] : 0;
     const day = dateArray[2] !== undefined ? dateArray[2] : 0;
