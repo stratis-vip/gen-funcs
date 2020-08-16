@@ -21,7 +21,9 @@
     "ts-jest": "^26.2.0",
     "typescript": "^3.9.7"
   },
-  "dependencies": {},
+  "dependencies": {
+    "api-general-classes": "^1.0.39"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/stratis-vip/gen-funcs.git"
