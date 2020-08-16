@@ -17,12 +17,14 @@
   "author": "Stratis Christodoulou",
   "license": "ISC",
   "devDependencies": {
+    "@types/lodash.clonedeep": "^4.5.6",
     "jest": "^26.4.0",
     "ts-jest": "^26.2.0",
     "typescript": "^3.9.7"
   },
   "dependencies": {
-    "api-general-classes": "^1.0.39"
+    "api-general-classes": "^1.0.39",
+    "lodash.clonedeep": "^4.5.0"
   },
   "repository": {
     "type": "git",

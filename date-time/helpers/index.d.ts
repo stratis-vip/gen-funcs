@@ -4,4 +4,5 @@
  */
 export declare function makeGMTtoLocalDate(d: Date): Array<number>;
 export declare const dateArrayToYYYMMDD: (ar: Array<number>) => string;
+export declare const splitYYYYMMDDDate: (d: string) => number[];
 export declare const splitDates: (d: string) => Array<number>;

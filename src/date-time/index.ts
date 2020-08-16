@@ -1,16 +1,46 @@
-import { makeGMTtoLocalDate, dateArrayToYYYMMDD } from "./helpers"
-import {JsonDateTime} from 'api-general-classes'
+import {
+  makeGMTtoLocalDate,
+  dateArrayToYYYMMDD,
+  splitDates,
+  splitYYYYMMDDDate,
+} from "./helpers"
+import cloneDeep from 'lodash.clonedeep'
+import { JsonDateTime } from "api-general-classes"
 
 export function yyyymmdd(d?: Date): string {
-  if (d === undefined) {
-    d = new Date()
-  }
-  const ar = makeGMTtoLocalDate(d)
+  const localD = d ? cloneDeep(d) : new Date()
+  
+  const ar = makeGMTtoLocalDate(localD)
   return dateArrayToYYYMMDD(ar)
 }
 
-export const fromDateToJsonDate = (d: Date):JsonDateTime =>{
-    return fromYYYYMMDDToJsonDate(yyyymmdd(d))
+/**
+ *  Μετατρέπει την ημερομηνία - ώρα σε αντικείμενο JsonDateTime,
+ *  Αν δε δωθεί ημερομηνία, τότε υπολογίζει την τρέχουσα ημερομηνία
+ * @param d Η ημερομηνία που θα μετατραπεί (σε μορφή Date)
+ */
+export const fromDateToJsonDT = (d?: Date): JsonDateTime => {
+  if (d === undefined) {
+    d = new Date()
+  }
+  const dateArray = makeGMTtoLocalDate(d)
+
+  const year = dateArray[0] !== undefined ? dateArray[0] : 0
+  const month = dateArray[1] !== undefined ? dateArray[1] : 0
+  const day = dateArray[2] !== undefined ? dateArray[2] : 0
+  const hour = dateArray[3] !== undefined ? dateArray[3] : 0
+  const mins = dateArray[4] !== undefined ? dateArray[4] : 0
+  const sec = dateArray[5] !== undefined ? dateArray[5] : 0
+  const mil = dateArray[6] !== undefined ? dateArray[6] : 0
+  return {
+    year,
+    month,
+    day,
+    hour,
+    mins,
+    sec,
+    mil,
+  }
 }
 
 export const fromYYYYMMDDToJsonDate = (s: string): JsonDateTime => {
@@ -31,4 +61,18 @@ export const fromYYYYMMDDtoSql = (d: string): string => {
 
 export const sqlToyyyymmdd = (s: string): string => {
   return s.split("-").join("")
+}
+
+/**
+ *
+ * @param d must be in format yyyymmdd
+ */
+export const isValidDate: (d: string) => boolean = (d) => {
+  const ar = splitYYYYMMDDDate(d)
+  if (ar.length === 3) {
+    if (ar[0] !== 0 && ar[1] > 0 && ar[1] <= 12 && ar[2] > 0 && ar[2] <= 31) {
+      return true
+    }
+  }
+  return false
 }
