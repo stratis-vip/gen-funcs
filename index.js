@@ -17,6 +17,7 @@ Object.defineProperty(exports, "sqlToJsonDateTime", { enumerable: true, get: fun
 Object.defineProperty(exports, "isValidDate", { enumerable: true, get: function () { return date_time_1.isValidDate; } });
 Object.defineProperty(exports, "jsonDateTimeToSql", { enumerable: true, get: function () { return date_time_1.jsonDateTimeToSql; } });
 Object.defineProperty(exports, "JsonDateToIsoString", { enumerable: true, get: function () { return date_time_1.JsonDateToIsoString; } });
+Object.defineProperty(exports, "JsonDateToString", { enumerable: true, get: function () { return date_time_1.JsonDateToString; } });
 Object.defineProperty(exports, "numberToTime", { enumerable: true, get: function () { return date_time_1.numberToTime; } });
 Object.defineProperty(exports, "extractDate", { enumerable: true, get: function () { return date_time_1.extractDate; } });
 Object.defineProperty(exports, "extractTime", { enumerable: true, get: function () { return date_time_1.extractTime; } });

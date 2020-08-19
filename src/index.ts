@@ -11,6 +11,7 @@ export {
   isValidDate,
   jsonDateTimeToSql,
   JsonDateToIsoString,
+  JsonDateToString,
   numberToTime,
   extractDate,
   extractTime,

@@ -7,8 +7,8 @@ import {
 } from "./helpers"
 import cloneDeep from "lodash.clonedeep"
 import isEqual from 'lodash.isequal'
-import { JsonDateTime, JsonDate, DateTimeShowOptions, JsonTime } from "api-general-classes"
-import { checkObject } from ".."
+import { JsonDateTime, JsonDate, DateTimeShowOptions, JsonTime, defaultDateTimeOptions } from "api-general-classes"
+import { checkObject, isEmptyObject } from ".."
 
 
 export function yyyymmdd(d?: Date): string {
@@ -105,6 +105,20 @@ const dateArray = splitDates(s)
 
 export const jsonDateTimeToSql = (d:JsonDateTime):string =>{
   return JsonDateToIsoString(d).substr(0, 19)
+}
+
+export function JsonDateToString(d: JsonDateTime, dtOptions: DateTimeShowOptions): string
+export function JsonDateToString(d: JsonDate, dtOptions: DateTimeShowOptions): string
+export function JsonDateToString(d: any, dtOptions: DateTimeShowOptions = defaultDateTimeOptions): string {
+  if (dtOptions === undefined || isEmptyObject(dtOptions)) {
+    dtOptions = defaultDateTimeOptions
+  }
+  let retVal: string = ""
+  if (dtOptions.date) {
+    retVal = `${d.day.toString().padStart(2, '0')}/${d.month.toString().padStart(2, '0')}/${d.year.toString().padStart(4, '0')}`
+  }
+  retVal += constructTimePart(dtOptions, d)
+  return retVal
 }
 
 export function JsonDateToIsoString(d: JsonDateTime): string

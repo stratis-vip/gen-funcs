@@ -3,10 +3,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.isEqualJsonDate = exports.extractTime = exports.extractDate = exports.numberToTime = exports.JsonDateToIsoString = exports.jsonDateTimeToSql = exports.sqlToJsonDateTime = exports.isValidDate = exports.sqlToyyyymmdd = exports.fromYYYYMMDDtoSql = exports.fromYYYYMMDDToJsonDate = exports.fromDateToJsonDT = exports.yyyymmdd = void 0;
+exports.isEqualJsonDate = exports.extractTime = exports.extractDate = exports.numberToTime = exports.JsonDateToIsoString = exports.JsonDateToString = exports.jsonDateTimeToSql = exports.sqlToJsonDateTime = exports.isValidDate = exports.sqlToyyyymmdd = exports.fromYYYYMMDDtoSql = exports.fromYYYYMMDDToJsonDate = exports.fromDateToJsonDT = exports.yyyymmdd = void 0;
 const helpers_1 = require("./helpers");
 const lodash_clonedeep_1 = __importDefault(require("lodash.clonedeep"));
 const lodash_isequal_1 = __importDefault(require("lodash.isequal"));
+const api_general_classes_1 = require("api-general-classes");
 const __1 = require("..");
 function yyyymmdd(d) {
     const localD = d ? lodash_clonedeep_1.default(d) : new Date();
@@ -97,6 +98,18 @@ exports.sqlToJsonDateTime = (s) => {
 exports.jsonDateTimeToSql = (d) => {
     return JsonDateToIsoString(d).substr(0, 19);
 };
+function JsonDateToString(d, dtOptions = api_general_classes_1.defaultDateTimeOptions) {
+    if (dtOptions === undefined || __1.isEmptyObject(dtOptions)) {
+        dtOptions = api_general_classes_1.defaultDateTimeOptions;
+    }
+    let retVal = "";
+    if (dtOptions.date) {
+        retVal = `${d.day.toString().padStart(2, '0')}/${d.month.toString().padStart(2, '0')}/${d.year.toString().padStart(4, '0')}`;
+    }
+    retVal += helpers_1.constructTimePart(dtOptions, d);
+    return retVal;
+}
+exports.JsonDateToString = JsonDateToString;
 function JsonDateToIsoString(d) {
     const dtOptions = {
         time: true,
