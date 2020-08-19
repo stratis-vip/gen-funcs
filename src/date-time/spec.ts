@@ -5,6 +5,9 @@ import {
   fromYYYYMMDDtoSql,
   sqlToyyyymmdd,
   isValidDate,
+  sqlToJsonDateTime,
+  JsonDateToIsoString,
+  jsonDateTimeToSql,
 } from "."
 describe("yyyymmdd", () => {
   const date = new Date("2020-08-16T17:56:37.536Z")
@@ -54,5 +57,21 @@ describe("yyyymmdd", () => {
 
   test("isValidDate", () => {
     expect(isValidDate(yyymmddDate)).toBeTruthy()
+  })
+
+  test("sqltoyyyymmdd", ()=> {
+    expect(sqlToyyyymmdd('2020-08-19 00:00:00')).toBe('20200819')
+  })
+
+  test("sqlToJsonDateTime", ()=> {
+    expect(sqlToJsonDateTime('2020-08-19 00:34:00').mins).toBe(34)
+  })
+
+  test("sqlToJsonDateTime", ()=> {
+    expect(JsonDateToIsoString(jsonObj)).toBe('2020-08-16 20:56:37.536')
+  })
+
+  test("jsonDateTimeToSql", ()=> {
+    expect(jsonDateTimeToSql(jsonObj)).toBe('2020-08-16 20:56:37')
   })
 })

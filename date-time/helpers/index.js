@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.splitDates = exports.splitYYYYMMDDDate = exports.dateArrayToYYYMMDD = exports.makeGMTtoLocalDate = void 0;
+exports.constructTimePart = exports.splitDates = exports.splitYYYYMMDDDate = exports.dateArrayToYYYMMDD = exports.makeGMTtoLocalDate = void 0;
 const lodash_clonedeep_1 = __importDefault(require("lodash.clonedeep"));
 /**
  * Convert a date to an array. take care the time difference from GMT
@@ -35,5 +35,25 @@ exports.splitDates = (d) => {
         return [];
     const ar = d.split(/[TZ:.\s*\/\t*-]/g);
     return ar.filter(a => a !== '').map((n) => Number(n));
+};
+exports.constructTimePart = (dtOptions, d) => {
+    const { date, time, secs, mils } = dtOptions;
+    let retVal = "";
+    if (time) {
+        if (date) {
+            retVal += " ";
+        }
+        retVal += d.hour !== undefined ? d.hour.toString().padStart(2, '0') + ':' : ' 00:';
+        retVal += d.mins !== undefined ? d.mins.toString().padStart(2, '0') : '00';
+        if (secs) {
+            retVal += ':';
+            retVal += d.sec !== undefined ? d.sec.toString().padStart(2, '0') : '00';
+            if (mils) {
+                retVal += '.';
+                retVal += d.mil !== undefined ? d.mil.toString().padStart(3, '0') : '000';
+            }
+        }
+    }
+    return retVal;
 };
 //# sourceMappingURL=index.js.map

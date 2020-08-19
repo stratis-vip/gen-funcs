@@ -1,4 +1,4 @@
-import { JsonDateTime } from "api-general-classes";
+import { JsonDateTime, JsonDate, JsonTime } from "api-general-classes";
 export declare function yyyymmdd(d?: Date): string;
 /**
  *  Μετατρέπει την ημερομηνία - ώρα σε αντικείμενο JsonDateTime,
@@ -14,3 +14,11 @@ export declare const sqlToyyyymmdd: (s: string) => string;
  * @param d must be in format yyyymmdd
  */
 export declare const isValidDate: (d: string) => boolean;
+export declare const sqlToJsonDateTime: (s: string) => JsonDateTime;
+export declare const jsonDateTimeToSql: (d: JsonDateTime) => string;
+export declare function JsonDateToIsoString(d: JsonDateTime): string;
+export declare function JsonDateToIsoString(d: JsonDate): string;
+export declare const numberToTime: (s: number, showMilliseconds?: boolean) => string;
+export declare const extractDate: (s: JsonDateTime) => JsonDate;
+export declare const extractTime: (s: JsonDateTime) => JsonTime;
+export declare const isEqualJsonDate: (a: JsonDateTime, b: JsonDateTime, checkTime?: boolean) => boolean;

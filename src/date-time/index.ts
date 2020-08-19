@@ -2,9 +2,14 @@ import {
   makeGMTtoLocalDate,
   dateArrayToYYYMMDD,
   splitYYYYMMDDDate,
+  splitDates,
+  constructTimePart,
 } from "./helpers"
 import cloneDeep from "lodash.clonedeep"
-import { JsonDateTime } from "api-general-classes"
+import isEqual from 'lodash.isequal'
+import { JsonDateTime, JsonDate, DateTimeShowOptions, JsonTime } from "api-general-classes"
+import { checkObject } from ".."
+
 
 export function yyyymmdd(d?: Date): string {
   const localD = d ? cloneDeep(d) : new Date()
@@ -56,7 +61,12 @@ export const fromYYYYMMDDtoSql = (d: string): string => {
 }
 
 export const sqlToyyyymmdd = (s: string): string => {
-  return s.split("-").join("")
+  const sqlArray = splitDates(s)
+  let retVal = '';
+  for ( let i = 0; i <3;i++){
+    retVal += sqlArray[i].toString().padStart(2,'0')
+  }
+  return retVal
 }
 
 /**
@@ -73,3 +83,85 @@ export const isValidDate: (d: string) => boolean = (d) => {
   return false
 }
 
+export const sqlToJsonDateTime = (s:string):JsonDateTime =>{
+const dateArray = splitDates(s)
+  const year = dateArray[0] !== undefined ? dateArray[0] : 0
+  const month = dateArray[1] !== undefined ? dateArray[1] : 0
+  const day = dateArray[2] !== undefined ? dateArray[2] : 0
+  const hour = dateArray[3] !== undefined ? dateArray[3] : 0
+  const mins = dateArray[4] !== undefined ? dateArray[4] : 0
+  const sec = dateArray[5] !== undefined ? dateArray[5] : 0
+  const mil = dateArray[6] !== undefined ? dateArray[6] : 0
+  return {
+    year,
+    month,
+    day,
+    hour,
+    mins,
+    sec,
+    mil,
+  }
+}
+
+export const jsonDateTimeToSql = (d:JsonDateTime):string =>{
+  return JsonDateToIsoString(d).substr(0, 19)
+}
+
+export function JsonDateToIsoString(d: JsonDateTime): string
+export function JsonDateToIsoString(d: JsonDate): string
+export function JsonDateToIsoString(d: any): string {
+  const dtOptions: DateTimeShowOptions = {
+    time: true,
+    date: true,
+    secs: true,
+    mils: true
+  }
+  let retVal = `${d.year.toString().padStart(4, '0')}-${d.month.toString().padStart(2, '0')}-${d.day.toString().padStart(2, '0')}`
+  retVal += constructTimePart(dtOptions,d)
+  return retVal
+}
+
+export const numberToTime = (s: number, showMilliseconds: boolean = false) => {
+  if (s === undefined || s === 0) {
+    return "00:00:00"
+  }
+  let retVal = ""
+  const hours = Math.floor(s / 3600)
+  s = s - 3600 * hours
+  const mins = Math.floor(s / 60)
+  s = s - 60 * mins
+  const secs = Math.floor(s)
+
+  retVal = `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`
+  if (showMilliseconds) {
+    const st = (s - secs).toString()
+    const ar = st.split('.')
+    const mils = ar[1] ? ar[1] : '0'
+    retVal += `.${mils.padEnd(3, '0')}`
+  }
+  return retVal
+}
+
+export const extractDate = (s: JsonDateTime): JsonDate => {
+  if (!checkObject(s)) throw new Error(`${s} is not a valid date`)
+  return { year: s.year, month: s.month, day: s.day }
+}
+
+export const extractTime = (s: JsonDateTime): JsonTime => {
+  if (!checkObject(s)) throw new Error(`${s} is not a valid date`)
+  return { hour: s.hour, mins: s.mins, sec: s.sec, mil: s.mil }
+}
+
+export const isEqualJsonDate = (a: JsonDateTime, b: JsonDateTime, checkTime: boolean = false) => {
+  if (!checkObject(a) || !checkObject(b)) {
+    throw new Error('Δεν είναι αντικείμενα JsonDate(Time)')
+  }
+  if (checkTime === undefined) {
+    checkTime = false
+  }
+  if (checkTime) {
+    return isEqual(a, b)
+  } else {
+    return isEqual(extractDate(a), extractDate(b))
+  }
+}
