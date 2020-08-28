@@ -15,5 +15,6 @@ export {
   numberToTime,
   extractDate,
   extractTime,
-  isEqualJsonDate
+  isEqualJsonDate,
+  getYearToTwodigits
 } from "./date-time"

@@ -56,3 +56,14 @@ export const constructTimePart = (dtOptions: DateTimeShowOptions, d: JsonDateTim
     }
   } return retVal
 }
+
+export const removeTH = (value: number, ada: number) => {
+  let c = value
+  // remove thousands
+  c = c / ada
+  const ar = c.toString().split('.')
+  if (ar.length === 2) {
+    c = Number('0.' + ar[1]) * ada
+  } else { c = 0 }
+  return c
+}

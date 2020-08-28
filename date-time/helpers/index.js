@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.constructTimePart = exports.splitDates = exports.splitYYYYMMDDDate = exports.dateArrayToYYYMMDD = exports.makeGMTtoLocalDate = void 0;
+exports.removeTH = exports.constructTimePart = exports.splitDates = exports.splitYYYYMMDDDate = exports.dateArrayToYYYMMDD = exports.makeGMTtoLocalDate = void 0;
 const lodash_clonedeep_1 = __importDefault(require("lodash.clonedeep"));
 /**
  * Convert a date to an array. take care the time difference from GMT
@@ -55,5 +55,18 @@ exports.constructTimePart = (dtOptions, d) => {
         }
     }
     return retVal;
+};
+exports.removeTH = (value, ada) => {
+    let c = value;
+    // remove thousands
+    c = c / ada;
+    const ar = c.toString().split('.');
+    if (ar.length === 2) {
+        c = Number('0.' + ar[1]) * ada;
+    }
+    else {
+        c = 0;
+    }
+    return c;
 };
 //# sourceMappingURL=index.js.map

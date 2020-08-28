@@ -24,3 +24,4 @@ export declare const numberToTime: (s: number, showMilliseconds?: boolean) => st
 export declare const extractDate: (s: JsonDateTime) => JsonDate;
 export declare const extractTime: (s: JsonDateTime) => JsonTime;
 export declare const isEqualJsonDate: (a: JsonDateTime, b: JsonDateTime, checkTime?: boolean) => boolean;
+export declare const getYearToTwodigits: (value: number) => number;

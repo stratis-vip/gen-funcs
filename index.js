@@ -22,4 +22,5 @@ Object.defineProperty(exports, "numberToTime", { enumerable: true, get: function
 Object.defineProperty(exports, "extractDate", { enumerable: true, get: function () { return date_time_1.extractDate; } });
 Object.defineProperty(exports, "extractTime", { enumerable: true, get: function () { return date_time_1.extractTime; } });
 Object.defineProperty(exports, "isEqualJsonDate", { enumerable: true, get: function () { return date_time_1.isEqualJsonDate; } });
+Object.defineProperty(exports, "getYearToTwodigits", { enumerable: true, get: function () { return date_time_1.getYearToTwodigits; } });
 //# sourceMappingURL=index.js.map

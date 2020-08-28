@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.isEqualJsonDate = exports.extractTime = exports.extractDate = exports.numberToTime = exports.JsonDateToIsoString = exports.JsonDateToString = exports.jsonDateTimeToSql = exports.sqlToJsonDateTime = exports.isValidDate = exports.sqlToyyyymmdd = exports.fromYYYYMMDDtoSql = exports.fromYYYYMMDDToJsonDate = exports.fromDateToJsonDT = exports.yyyymmdd = void 0;
+exports.getYearToTwodigits = exports.isEqualJsonDate = exports.extractTime = exports.extractDate = exports.numberToTime = exports.JsonDateToIsoString = exports.JsonDateToString = exports.jsonDateTimeToSql = exports.sqlToJsonDateTime = exports.isValidDate = exports.sqlToyyyymmdd = exports.fromYYYYMMDDtoSql = exports.fromYYYYMMDDToJsonDate = exports.fromDateToJsonDT = exports.yyyymmdd = void 0;
 const helpers_1 = require("./helpers");
 const lodash_clonedeep_1 = __importDefault(require("lodash.clonedeep"));
 const lodash_isequal_1 = __importDefault(require("lodash.isequal"));
@@ -164,5 +164,12 @@ exports.isEqualJsonDate = (a, b, checkTime = false) => {
     else {
         return lodash_isequal_1.default(exports.extractDate(a), exports.extractDate(b));
     }
+};
+exports.getYearToTwodigits = (value) => {
+    let c = value;
+    c = helpers_1.removeTH(c, 1000);
+    if (c > 100)
+        c = helpers_1.removeTH(c, 100);
+    return c;
 };
 //# sourceMappingURL=index.js.map

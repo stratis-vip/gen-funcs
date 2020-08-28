@@ -4,6 +4,7 @@ import {
   splitYYYYMMDDDate,
   splitDates,
   constructTimePart,
+  removeTH,
 } from "./helpers"
 import cloneDeep from "lodash.clonedeep"
 import isEqual from 'lodash.isequal'
@@ -179,3 +180,12 @@ export const isEqualJsonDate = (a: JsonDateTime, b: JsonDateTime, checkTime: boo
     return isEqual(extractDate(a), extractDate(b))
   }
 }
+
+export const getYearToTwodigits = (value: number): number => {
+  let c = value
+  c = removeTH(c, 1000)
+  if (c > 100)
+    c = removeTH(c, 100)
+  return c
+}
+

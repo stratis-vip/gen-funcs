@@ -8,3 +8,4 @@ export declare const dateArrayToYYYMMDD: (ar: Array<number>) => string;
 export declare const splitYYYYMMDDDate: (d: string) => number[];
 export declare const splitDates: (d: string) => Array<number>;
 export declare const constructTimePart: (dtOptions: DateTimeShowOptions, d: JsonDateTime) => string;
+export declare const removeTH: (value: number, ada: number) => number;
