@@ -8,7 +8,7 @@ import {
   sqlToJsonDateTime,
   JsonDateToIsoString,
   jsonDateTimeToSql,
-  getYearToTwodigits,
+  getYearToTwodigits, fromDateToSql,
 } from "."
 describe("yyyymmdd", () => {
   const date = new Date("2020-08-16T17:56:37.536Z")
@@ -82,4 +82,8 @@ test('get two digit year', () => {
   expect(getYearToTwodigits(2020)).toBe(20)
   expect(getYearToTwodigits(2120)).toBe(20)
   expect(getYearToTwodigits(2000)).toBe(0)
+})
+
+test('fromdatetoSql', ()=>{
+  expect(fromDateToSql(new Date('2020-09-09 23:03:12'))).toBe('2020-09-09 23:03:12')
 })

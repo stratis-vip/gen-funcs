@@ -33,6 +33,12 @@ export const fromYYYYMMDDToJsonDate = (s: string): JsonDateTime => {
   }
 }
 
+export const fromDateToSql  = (d?:Date) : string =>{
+  const localD = d ? cloneDeep(d) : new Date()
+
+  const ar = makeGMTtoLocalDate(localD)
+  return `${ar[0].toString()}-${ar[1].toString().padStart(2,'0')}-${ar[2].toString().padStart(2,'0')} ${ar[3].toString().padStart(2,'0')}:${ar[4].toString().padStart(2,'0')}:${ar[5].toString().padStart(2,'0')}`
+}
 export const fromYYYYMMDDtoSql = (d: string): string => {
   const a = d.toString()
   return `${a.substr(0, 4)}-${a.substr(4, 2)}-${a.substr(6, 2)}`

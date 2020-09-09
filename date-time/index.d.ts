@@ -5,6 +5,7 @@ export declare function yyyymmdd(d?: Date): string;
 /** μετατρέπει την ημερομηνία της μορφής ΕΕΕΕΜΜΗΗ σε αντικείμενο JsonDateTime.
  * Ta πεδία της ώρας είναι μηδενικά*/
 export declare const fromYYYYMMDDToJsonDate: (s: string) => JsonDateTime;
+export declare const fromDateToSql: (d?: Date | undefined) => string;
 export declare const fromYYYYMMDDtoSql: (d: string) => string;
 export declare const sqlToyyyymmdd: (sql: string) => string;
 /**

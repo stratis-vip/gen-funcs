@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getYearToTwodigits = exports.isEqualJsonDate = exports.extractTime = exports.extractDate = exports.numberToTime = exports.JsonDateToIsoString = exports.JsonDateToString = exports.jsonDateTimeToSql = exports.fromDateToJsonDT = exports.sqlToJsonDateTime = exports.isValidDate = exports.sqlToyyyymmdd = exports.fromYYYYMMDDtoSql = exports.fromYYYYMMDDToJsonDate = exports.yyyymmdd = void 0;
+exports.getYearToTwodigits = exports.isEqualJsonDate = exports.extractTime = exports.extractDate = exports.numberToTime = exports.JsonDateToIsoString = exports.JsonDateToString = exports.jsonDateTimeToSql = exports.fromDateToJsonDT = exports.sqlToJsonDateTime = exports.isValidDate = exports.sqlToyyyymmdd = exports.fromYYYYMMDDtoSql = exports.fromDateToSql = exports.fromYYYYMMDDToJsonDate = exports.yyyymmdd = void 0;
 const helpers_1 = require("./helpers");
 const lodash_clonedeep_1 = __importDefault(require("lodash.clonedeep"));
 const lodash_isequal_1 = __importDefault(require("lodash.isequal"));
@@ -29,6 +29,11 @@ exports.fromYYYYMMDDToJsonDate = (s) => {
     else {
         throw new Error(`${s} is not a valid date`);
     }
+};
+exports.fromDateToSql = (d) => {
+    const localD = d ? lodash_clonedeep_1.default(d) : new Date();
+    const ar = helpers_1.makeGMTtoLocalDate(localD);
+    return `${ar[0].toString()}-${ar[1].toString().padStart(2, '0')}-${ar[2].toString().padStart(2, '0')} ${ar[3].toString().padStart(2, '0')}:${ar[4].toString().padStart(2, '0')}:${ar[5].toString().padStart(2, '0')}`;
 };
 exports.fromYYYYMMDDtoSql = (d) => {
     const a = d.toString();
