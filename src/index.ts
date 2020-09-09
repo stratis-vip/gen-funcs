@@ -4,6 +4,7 @@ export {checkObject, isEmptyObject } from './jscript'
 export {
   yyyymmdd,
   fromDateToJsonDT,
+  fromDateToSql,
   fromYYYYMMDDToJsonDate,
   fromYYYYMMDDtoSql,
   sqlToyyyymmdd,
