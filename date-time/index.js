@@ -3,43 +3,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getYearToTwodigits = exports.isEqualJsonDate = exports.extractTime = exports.extractDate = exports.numberToTime = exports.JsonDateToIsoString = exports.JsonDateToString = exports.jsonDateTimeToSql = exports.sqlToJsonDateTime = exports.isValidDate = exports.sqlToyyyymmdd = exports.fromYYYYMMDDtoSql = exports.fromYYYYMMDDToJsonDate = exports.fromDateToJsonDT = exports.yyyymmdd = void 0;
+exports.getYearToTwodigits = exports.isEqualJsonDate = exports.extractTime = exports.extractDate = exports.numberToTime = exports.JsonDateToIsoString = exports.JsonDateToString = exports.jsonDateTimeToSql = exports.fromDateToJsonDT = exports.sqlToJsonDateTime = exports.isValidDate = exports.sqlToyyyymmdd = exports.fromYYYYMMDDtoSql = exports.fromYYYYMMDDToJsonDate = exports.yyyymmdd = void 0;
 const helpers_1 = require("./helpers");
 const lodash_clonedeep_1 = __importDefault(require("lodash.clonedeep"));
 const lodash_isequal_1 = __importDefault(require("lodash.isequal"));
 const api_general_classes_1 = require("api-general-classes");
 const __1 = require("..");
+/** μετατρέπει το αντικείμενο Date σε ημερομηνία με την μορφή ΕΕΕΕΜΜΗΗ
+ * Αν δεν δοθεί ημερομηνία δημιουργεί μια με την τρέχουσα ώρα - ημέρα*/
 function yyyymmdd(d) {
     const localD = d ? lodash_clonedeep_1.default(d) : new Date();
     const ar = helpers_1.makeGMTtoLocalDate(localD);
     return helpers_1.dateArrayToYYYMMDD(ar);
 }
 exports.yyyymmdd = yyyymmdd;
-/**
- *  Μετατρέπει την ημερομηνία - ώρα σε αντικείμενο JsonDateTime,
- *  Αν δε δωθεί ημερομηνία, τότε υπολογίζει την τρέχουσα ημερομηνία
- * @param d Η ημερομηνία που θα μετατραπεί (σε μορφή Date)
- */
-exports.fromDateToJsonDT = (d) => {
-    const localDate = d ? new Date(d.getTime()) : new Date;
-    const dateArray = helpers_1.makeGMTtoLocalDate(localDate);
-    const year = dateArray[0] !== undefined ? dateArray[0] : 0;
-    const month = dateArray[1] !== undefined ? dateArray[1] : 0;
-    const day = dateArray[2] !== undefined ? dateArray[2] : 0;
-    const hour = dateArray[3] !== undefined ? dateArray[3] : 0;
-    const mins = dateArray[4] !== undefined ? dateArray[4] : 0;
-    const sec = dateArray[5] !== undefined ? dateArray[5] : 0;
-    const mil = dateArray[6] !== undefined ? dateArray[6] : 0;
-    return {
-        year,
-        month,
-        day,
-        hour,
-        mins,
-        sec,
-        mil,
-    };
-};
+/** μετατρέπει την ημερομηνία της μορφής ΕΕΕΕΜΜΗΗ σε αντικείμενο JsonDateTime.
+ * Ta πεδία της ώρας είναι μηδενικά*/
 exports.fromYYYYMMDDToJsonDate = (s) => {
     if (s !== undefined && s.length === 8) {
         const year = Number(s.substr(0, 4));
@@ -55,13 +34,8 @@ exports.fromYYYYMMDDtoSql = (d) => {
     const a = d.toString();
     return `${a.substr(0, 4)}-${a.substr(4, 2)}-${a.substr(6, 2)}`;
 };
-exports.sqlToyyyymmdd = (s) => {
-    const sqlArray = helpers_1.splitDates(s);
-    let retVal = '';
-    for (let i = 0; i < 3; i++) {
-        retVal += sqlArray[i].toString().padStart(2, '0');
-    }
-    return retVal;
+exports.sqlToyyyymmdd = (sql) => {
+    return sql.split('-').reduce((a, b) => a + b).slice(0, 8);
 };
 /**
  *
@@ -76,8 +50,7 @@ exports.isValidDate = (d) => {
     }
     return false;
 };
-exports.sqlToJsonDateTime = (s) => {
-    const dateArray = helpers_1.splitDates(s);
+const fromArray = (dateArray) => {
     const year = dateArray[0] !== undefined ? dateArray[0] : 0;
     const month = dateArray[1] !== undefined ? dateArray[1] : 0;
     const day = dateArray[2] !== undefined ? dateArray[2] : 0;
@@ -94,6 +67,18 @@ exports.sqlToJsonDateTime = (s) => {
         sec,
         mil,
     };
+};
+exports.sqlToJsonDateTime = (s) => {
+    return fromArray(helpers_1.splitDates(s));
+};
+/**
+ *  Μετατρέπει την ημερομηνία - ώρα σε αντικείμενο JsonDateTime,
+ *  Αν δε δωθεί ημερομηνία, τότε υπολογίζει την τρέχουσα ημερομηνία
+ * @param d Η ημερομηνία που θα μετατραπεί (σε μορφή Date)
+ */
+exports.fromDateToJsonDT = (d) => {
+    const localDate = d ? new Date(d.getTime()) : new Date;
+    return fromArray(helpers_1.makeGMTtoLocalDate(localDate));
 };
 exports.jsonDateTimeToSql = (d) => {
     return JsonDateToIsoString(d).substr(0, 19);

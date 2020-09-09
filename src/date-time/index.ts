@@ -8,10 +8,11 @@ import {
 } from "./helpers"
 import cloneDeep from "lodash.clonedeep"
 import isEqual from 'lodash.isequal'
-import { JsonDateTime, JsonDate, DateTimeShowOptions, JsonTime, defaultDateTimeOptions } from "api-general-classes"
-import { checkObject, isEmptyObject } from ".."
+import {JsonDateTime, JsonDate, DateTimeShowOptions, JsonTime, defaultDateTimeOptions} from "api-general-classes"
+import {checkObject, isEmptyObject} from ".."
 
-
+/** μετατρέπει το αντικείμενο Date σε ημερομηνία με την μορφή ΕΕΕΕΜΜΗΗ
+ * Αν δεν δοθεί ημερομηνία δημιουργεί μια με την τρέχουσα ώρα - ημέρα*/
 export function yyyymmdd(d?: Date): string {
   const localD = d ? cloneDeep(d) : new Date()
 
@@ -19,38 +20,14 @@ export function yyyymmdd(d?: Date): string {
   return dateArrayToYYYMMDD(ar)
 }
 
-/**
- *  Μετατρέπει την ημερομηνία - ώρα σε αντικείμενο JsonDateTime,
- *  Αν δε δωθεί ημερομηνία, τότε υπολογίζει την τρέχουσα ημερομηνία
- * @param d Η ημερομηνία που θα μετατραπεί (σε μορφή Date)
- */
-export const fromDateToJsonDT = (d?: Date): JsonDateTime => {
-  const localDate = d ? new Date(d.getTime()) : new Date
-  const dateArray = makeGMTtoLocalDate(localDate)
-  const year = dateArray[0] !== undefined ? dateArray[0] : 0
-  const month = dateArray[1] !== undefined ? dateArray[1] : 0
-  const day = dateArray[2] !== undefined ? dateArray[2] : 0
-  const hour = dateArray[3] !== undefined ? dateArray[3] : 0
-  const mins = dateArray[4] !== undefined ? dateArray[4] : 0
-  const sec = dateArray[5] !== undefined ? dateArray[5] : 0
-  const mil = dateArray[6] !== undefined ? dateArray[6] : 0
-  return {
-    year,
-    month,
-    day,
-    hour,
-    mins,
-    sec,
-    mil,
-  }
-}
-
+/** μετατρέπει την ημερομηνία της μορφής ΕΕΕΕΜΜΗΗ σε αντικείμενο JsonDateTime.
+ * Ta πεδία της ώρας είναι μηδενικά*/
 export const fromYYYYMMDDToJsonDate = (s: string): JsonDateTime => {
   if (s !== undefined && s.length === 8) {
     const year = Number(s.substr(0, 4))
     const month = Number(s.substr(4, 2))
     const day = Number(s.substr(6, 2))
-    return { year, month, day, hour: 0, mins: 0, sec: 0, mil: 0 }
+    return {year, month, day, hour: 0, mins: 0, sec: 0, mil: 0}
   } else {
     throw new Error(`${s} is not a valid date`)
   }
@@ -61,13 +38,8 @@ export const fromYYYYMMDDtoSql = (d: string): string => {
   return `${a.substr(0, 4)}-${a.substr(4, 2)}-${a.substr(6, 2)}`
 }
 
-export const sqlToyyyymmdd = (s: string): string => {
-  const sqlArray = splitDates(s)
-  let retVal = '';
-  for ( let i = 0; i <3;i++){
-    retVal += sqlArray[i].toString().padStart(2,'0')
-  }
-  return retVal
+export const sqlToyyyymmdd = (sql: string): string => {
+  return sql.split('-').reduce((a, b) => a + b).slice(0, 8)
 }
 
 /**
@@ -84,8 +56,7 @@ export const isValidDate: (d: string) => boolean = (d) => {
   return false
 }
 
-export const sqlToJsonDateTime = (s:string):JsonDateTime =>{
-const dateArray = splitDates(s)
+const fromArray = (dateArray: number[]): JsonDateTime => {
   const year = dateArray[0] !== undefined ? dateArray[0] : 0
   const month = dateArray[1] !== undefined ? dateArray[1] : 0
   const day = dateArray[2] !== undefined ? dateArray[2] : 0
@@ -104,7 +75,21 @@ const dateArray = splitDates(s)
   }
 }
 
-export const jsonDateTimeToSql = (d:JsonDateTime):string =>{
+export const sqlToJsonDateTime = (s: string): JsonDateTime => {
+  return fromArray(splitDates(s))
+}
+
+/**
+ *  Μετατρέπει την ημερομηνία - ώρα σε αντικείμενο JsonDateTime,
+ *  Αν δε δωθεί ημερομηνία, τότε υπολογίζει την τρέχουσα ημερομηνία
+ * @param d Η ημερομηνία που θα μετατραπεί (σε μορφή Date)
+ */
+export const fromDateToJsonDT = (d?: Date): JsonDateTime => {
+  const localDate = d ? new Date(d.getTime()) : new Date
+  return fromArray(makeGMTtoLocalDate(localDate))
+}
+
+export const jsonDateTimeToSql = (d: JsonDateTime): string => {
   return JsonDateToIsoString(d).substr(0, 19)
 }
 
@@ -132,7 +117,7 @@ export function JsonDateToIsoString(d: any): string {
     mils: true
   }
   let retVal = `${d.year.toString().padStart(4, '0')}-${d.month.toString().padStart(2, '0')}-${d.day.toString().padStart(2, '0')}`
-  retVal += constructTimePart(dtOptions,d)
+  retVal += constructTimePart(dtOptions, d)
   return retVal
 }
 
@@ -159,12 +144,12 @@ export const numberToTime = (s: number, showMilliseconds: boolean = false) => {
 
 export const extractDate = (s: JsonDateTime): JsonDate => {
   if (!checkObject(s)) throw new Error(`${s} is not a valid date`)
-  return { year: s.year, month: s.month, day: s.day }
+  return {year: s.year, month: s.month, day: s.day}
 }
 
 export const extractTime = (s: JsonDateTime): JsonTime => {
   if (!checkObject(s)) throw new Error(`${s} is not a valid date`)
-  return { hour: s.hour, mins: s.mins, sec: s.sec, mil: s.mil }
+  return {hour: s.hour, mins: s.mins, sec: s.sec, mil: s.mil}
 }
 
 export const isEqualJsonDate = (a: JsonDateTime, b: JsonDateTime, checkTime: boolean = false) => {

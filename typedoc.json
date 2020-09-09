@@ -1,0 +1,6 @@
+{
+  "mode": "modules",
+  "out": "./docs",
+  "src": "./src",
+  "excludeNotExported": true
+}

@@ -15,4 +15,8 @@ describe("Arrays", () => {
     ).toStrictEqual([12, 14, 17, 22, 7, 8])
   })
 
+  it('addarrys([1],[2,3] => [3,3])',()=>{
+    expect(addArrays([1,2],[2])).toStrictEqual([3,2])
+  })
+
 })
