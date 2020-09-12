@@ -4,4 +4,4 @@
  */
 export declare const checkObject: (value: any) => boolean;
 export declare const isEmptyObject: (obj: any) => boolean;
-export declare const dbg: (msg: any) => void;
+export declare const dbg: (msg: any, title?: string | undefined) => void;

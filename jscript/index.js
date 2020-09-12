@@ -11,26 +11,26 @@ exports.checkObject = (value) => {
 exports.isEmptyObject = (obj) => {
     return Object.keys(obj).length === 0;
 };
-exports.dbg = (msg) => {
+exports.dbg = (msg, title) => {
     if (process.env.NODE_ENG !== 'production') {
         if (msg === undefined) {
             return constructDebug(msg);
         }
         if (exports.checkObject(msg)) {
-            return constructDebug(msg, `\n${JSON.stringify(msg, null, 2)}`);
+            return constructDebug(msg, undefined, `\n${JSON.stringify(msg, null, 2)}`);
         }
         else {
             if (msg === null) {
-                return constructDebug(msg, `null`);
+                return constructDebug(msg, undefined, `null`);
             }
         }
         switch (typeof msg) {
-            case 'boolean': return constructDebug(msg, (msg ? 'TRUE' : 'FALSE'));
+            case 'boolean': return constructDebug(msg, undefined, (msg ? 'TRUE' : 'FALSE'));
             default: return constructDebug(msg);
         }
     }
 };
-const constructDebug = (value, messageOverride) => {
+const constructDebug = (value, title, messageOverride) => {
     const Reset = "\x1b[0m";
     const Bright = "\x1b[1m";
     // const Dim = "\x1b[2m"
@@ -59,6 +59,7 @@ const constructDebug = (value, messageOverride) => {
     const info = `${FgGreen}DEBUG INFO ${new Date().toLocaleTimeString()}: `;
     const objectType = `${Reset}${Bright}(${(typeof value).toUpperCase()})${Reset}\t`;
     const msg = messageOverride ? messageOverride : value ? String(value) : '';
-    return console.log(info + objectType + msg);
+    const titlePart = title ? ` ${title}=` : '';
+    return console.log(info + title + objectType + msg);
 };
 //# sourceMappingURL=index.js.map
