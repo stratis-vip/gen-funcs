@@ -11,7 +11,7 @@ export const isEmptyObject = (obj: any): boolean => {
 }
 
 export const dbg = (msg: any, title?:string) => {
-  if (process.env.NODE_ENG !== 'production') {
+  if (process.env.NODE_ENV !== 'production') {
     if (msg === undefined) {
       return constructDebug(msg)
     }

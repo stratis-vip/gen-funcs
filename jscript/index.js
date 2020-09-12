@@ -12,7 +12,7 @@ exports.isEmptyObject = (obj) => {
     return Object.keys(obj).length === 0;
 };
 exports.dbg = (msg, title) => {
-    if (process.env.NODE_ENG !== 'production') {
+    if (process.env.NODE_ENV !== 'production') {
         if (msg === undefined) {
             return constructDebug(msg);
         }
