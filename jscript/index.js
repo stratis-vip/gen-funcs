@@ -26,7 +26,7 @@ exports.dbg = (msg, title) => {
         }
         switch (typeof msg) {
             case 'boolean': return constructDebug(msg, undefined, (msg ? 'TRUE' : 'FALSE'));
-            default: return constructDebug(msg);
+            default: return constructDebug(msg, title);
         }
     }
 };
@@ -42,7 +42,7 @@ const constructDebug = (value, title, messageOverride) => {
     // const FgBlack = "\x1b[30m"
     // const FgRed = "\x1b[31m"
     const FgGreen = "\x1b[32m";
-    // const FgYellow = "\x1b[33m"
+    const FgYellow = "\x1b[33m";
     // const FgBlue = "\x1b[34m"
     // const FgMagenta = "\x1b[35m"
     // const FgCyan = "\x1b[36m"
@@ -57,9 +57,9 @@ const constructDebug = (value, title, messageOverride) => {
     // const BgCyan = "\x1b[46m"
     // const BgWhite = "\x1b[47m"
     const info = `${FgGreen}DEBUG INFO ${new Date().toLocaleTimeString()}: `;
-    const objectType = `${Reset}${Bright}(${(typeof value).toUpperCase()})${Reset}\t`;
+    const objectType = `${Reset}${Bright}(${(typeof value).toUpperCase()})${Reset}`;
     const msg = messageOverride ? messageOverride : value ? String(value) : '';
-    const titlePart = title ? ` ${title}=` : '';
-    return console.log(info + title + objectType + msg);
+    const titlePart = title ? ` ${FgYellow}${title}: ${Reset}` : ' : ';
+    return console.log(info + objectType + titlePart + msg);
 };
 //# sourceMappingURL=index.js.map

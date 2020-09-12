@@ -1,4 +1,4 @@
-import { checkObject, isEmptyObject } from "."
+import {checkObject, dbg, isEmptyObject} from "."
 describe("checkObject", () => {
   test("empty object", () => {
     expect(checkObject({})).toBeTruthy()
@@ -33,4 +33,8 @@ describe("isEmptyObject", () => {
   test("object ", () => {
     expect(isEmptyObject(new Object())).toBeTruthy()
   })
+
+  dbg(4,'number')
+  dbg(4)
+
 })
