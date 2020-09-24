@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addArrays = void 0;
+exports.last = exports.first = exports.tl = exports.hd = exports.addArrays = void 0;
 const findNext = (item, idx, array) => {
     let it = item;
     if (array[idx])
@@ -28,4 +28,44 @@ exports.addArrays = (...args) => {
     }
     return ret;
 };
+function hd(a) {
+    if (!a)
+        throw new TypeError;
+    if (a.length === 0)
+        throw new TypeError('variable is empty');
+    const [h, ..._] = a;
+    if (typeof a === 'string') {
+        return h;
+    }
+    return h;
+}
+exports.hd = hd;
+function tl(a) {
+    if (!a)
+        throw new TypeError;
+    if (a.length === 0)
+        throw new TypeError('variable is empty');
+    const [_, ...t] = a;
+    if (typeof a === 'string') {
+        return t.join('');
+    }
+    return t;
+}
+exports.tl = tl;
+function first(a) {
+    if (!a)
+        throw new TypeError;
+    if (a.length === 0)
+        throw new TypeError('variable is empty');
+    return [hd(a)];
+}
+exports.first = first;
+function last(a) {
+    if (!a)
+        throw new TypeError;
+    if (a.length === 0)
+        throw new TypeError('variable is empty');
+    return [[...a].pop()];
+}
+exports.last = last;
 //# sourceMappingURL=index.js.map

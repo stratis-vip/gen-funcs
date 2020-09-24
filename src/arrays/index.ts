@@ -23,3 +23,43 @@ export const addArrays = (...args: Array<number[]>): number[] => {
   }
   return ret
 }
+
+export function hd(a:string):string;
+export function hd<T>(a: T[]): T ;
+export function hd(a:any):any {
+  if (!a) throw new TypeError
+  if (a.length === 0) throw new TypeError('variable is empty')
+  const [h,..._] = a
+  if (typeof a === 'string'){
+    return h
+  }
+  return h
+}
+
+export function tl(a:string):string;
+export function tl<T>(a:T[]):T;
+export function tl(a:any):any{
+  if (!a) throw new TypeError
+  if (a.length === 0) throw new TypeError('variable is empty')
+  const [_,...t] = a
+  if (typeof a === 'string'){
+    return t.join('')
+  }
+  return t
+}
+
+export function first(a:string):string[];
+export function first<T>(a:T[]):T[];
+export function first(a:any):any[]{
+  if (!a) throw new TypeError
+  if (a.length === 0) throw new TypeError('variable is empty')
+  return [hd(a)]
+}
+
+export function last(a:string):string[];
+export function last<T>(a:T[]):T[];
+export function last(a:any):any[]{
+  if (!a) throw new TypeError
+  if (a.length === 0) throw new TypeError('variable is empty')
+  return  [[...a].pop()];
+}

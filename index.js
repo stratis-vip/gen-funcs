@@ -2,6 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var arrays_1 = require("./arrays");
 Object.defineProperty(exports, "addArrays", { enumerable: true, get: function () { return arrays_1.addArrays; } });
+Object.defineProperty(exports, "hd", { enumerable: true, get: function () { return arrays_1.hd; } });
+Object.defineProperty(exports, "tl", { enumerable: true, get: function () { return arrays_1.tl; } });
+Object.defineProperty(exports, "first", { enumerable: true, get: function () { return arrays_1.first; } });
+Object.defineProperty(exports, "last", { enumerable: true, get: function () { return arrays_1.last; } });
 var math_1 = require("./math");
 Object.defineProperty(exports, "random", { enumerable: true, get: function () { return math_1.random; } });
 var jscript_1 = require("./jscript");
