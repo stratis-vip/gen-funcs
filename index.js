@@ -11,6 +11,8 @@ Object.defineProperty(exports, "random", { enumerable: true, get: function () { 
 var jscript_1 = require("./jscript");
 Object.defineProperty(exports, "checkObject", { enumerable: true, get: function () { return jscript_1.checkObject; } });
 Object.defineProperty(exports, "isEmptyObject", { enumerable: true, get: function () { return jscript_1.isEmptyObject; } });
+Object.defineProperty(exports, "error", { enumerable: true, get: function () { return jscript_1.error; } });
+Object.defineProperty(exports, "info", { enumerable: true, get: function () { return jscript_1.info; } });
 Object.defineProperty(exports, "dbg", { enumerable: true, get: function () { return jscript_1.dbg; } });
 var date_time_1 = require("./date-time");
 Object.defineProperty(exports, "yyyymmdd", { enumerable: true, get: function () { return date_time_1.yyyymmdd; } });

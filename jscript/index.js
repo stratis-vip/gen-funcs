@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.dbg = exports.isEmptyObject = exports.checkObject = void 0;
+exports.dbg = exports.error = exports.info = exports.makeObject = exports.makeInfo = exports.dbgFactory = exports.identify = exports.isEmptyObject = exports.checkObject = void 0;
 /**
  * check if the value is an object
  * @param value object to check
@@ -11,26 +11,28 @@ exports.checkObject = (value) => {
 exports.isEmptyObject = (obj) => {
     return Object.keys(obj).length === 0;
 };
-exports.dbg = (msg, title) => {
-    if (process.env.NODE_ENV !== 'production') {
-        if (msg === undefined) {
-            return constructDebug(msg);
-        }
-        if (exports.checkObject(msg)) {
-            return constructDebug(msg, undefined, `\n${JSON.stringify(msg, null, 2)}`);
-        }
-        else {
-            if (msg === null) {
-                return constructDebug(msg, undefined, `null`);
+exports.identify = (what) => {
+    switch (typeof what) {
+        case 'string': return 'string';
+        case 'number': return 'number';
+        case 'object': {
+            if (what === null)
+                return 'null';
+            if (what === undefined)
+                return 'undefined';
+            if (what instanceof Array) {
+                return 'array';
             }
         }
-        switch (typeof msg) {
-            case 'boolean': return constructDebug(msg, undefined, (msg ? 'TRUE' : 'FALSE'));
-            default: return constructDebug(msg, title);
-        }
+        default: return typeof what;
     }
 };
-const constructDebug = (value, title, messageOverride) => {
+exports.dbgFactory = (title, msg, options) => {
+    if (process.env.NODE_ENV !== 'production') {
+        return constructDebug(title, msg, options);
+    }
+};
+const constructDebug = (title, value, options) => {
     const Reset = "\x1b[0m";
     const Bright = "\x1b[1m";
     // const Dim = "\x1b[2m"
@@ -56,10 +58,35 @@ const constructDebug = (value, title, messageOverride) => {
     // const BgMagenta = "\x1b[45m"
     // const BgCyan = "\x1b[46m"
     // const BgWhite = "\x1b[47m"
-    const info = `${FgGreen}DEBUG INFO ${new Date().toLocaleTimeString()}: `;
-    const objectType = `${Reset}${Bright}(${(typeof value).toUpperCase()})${Reset}`;
-    const msg = messageOverride ? messageOverride : value ? String(value) : '';
-    const titlePart = title ? ` ${FgYellow}${title}: ${Reset}` : ' : ';
-    return console.log(info + objectType + titlePart + msg);
+    const { date, color, showType, json, showFileName } = options;
+    const info = exports.makeInfo(title, { date, color, showFileName }); //`${FgGreen}DEBUG INFO ${new Date().toLocaleTimeString()}: `
+    const objectType = exports.makeObject(value, { showType, json }); //`${Reset}${Bright}(${(typeof value).toUpperCase()})${Reset}`
+    return info + objectType;
+};
+exports.makeInfo = (title, options) => {
+    const { date, color, showFileName } = options;
+    const dateString = (date ? new Date(date) : new Date()).toLocaleTimeString('el-GR', { hour12: false });
+    const colorString = color ? color : '[32m';
+    const fileString = showFileName ? `@${__filename}` : '';
+    return `${colorString}${title}${fileString}> ${dateString} - `;
+};
+exports.makeObject = (obj, options) => {
+    const Reset = "[0m";
+    const Bright = "[1m";
+    const { showType, json } = options;
+    const objType = showType ? `(${exports.identify(obj).toUpperCase()}): ` : '';
+    const objString = json ? JSON.stringify(obj) : `${obj}`;
+    return `${Reset}${Bright}${objType}${objString}${Reset}`;
+};
+exports.info = (message, showFileName = false) => {
+    console.log(exports.dbgFactory('INFO', message, { showFileName }));
+};
+exports.error = (errorMessage) => {
+    const FgRed = "\x1b[31m";
+    console.log(exports.dbgFactory('ERROR', errorMessage, { showFileName: true, color: FgRed }));
+};
+exports.dbg = (value, json = true, showFileName = false) => {
+    const FgCyan = "\x1b[36m";
+    console.log(exports.dbgFactory('DEBUG', value, { color: FgCyan, showType: true, showFileName, json }));
 };
 //# sourceMappingURL=index.js.map
