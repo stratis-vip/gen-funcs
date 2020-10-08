@@ -34,7 +34,6 @@ describe("isEmptyObject", () => {
     expect(isEmptyObject(new Object())).toBeTruthy()
   })
 
-  dbg(4,'number')
-  dbg(4)
+
 
 })

@@ -1,6 +1,6 @@
 export {addArrays, hd, tl, first, last} from './arrays'
 export {random} from './math'
-export {checkObject, isEmptyObject, dbg } from './jscript'
+export {checkObject, isEmptyObject, DebugOptions, error, info, dbg } from './jscript'
 export {
   yyyymmdd,
   fromDateToJsonDT,

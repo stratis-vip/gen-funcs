@@ -20,34 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="556abf5b-2fae-48f0-afa3-179e642773f8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/coverage/clover.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coverage/coverage-final.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coverage/lcov-report/base.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coverage/lcov-report/block-navigation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coverage/lcov-report/favicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coverage/lcov-report/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coverage/lcov-report/index.ts.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coverage/lcov-report/prettify.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coverage/lcov-report/prettify.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coverage/lcov-report/sort-arrow-sprite.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coverage/lcov-report/sorter.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coverage/lcov-report/src/arrays/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coverage/lcov-report/src/arrays/index.ts.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coverage/lcov-report/src/date-time/helpers/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coverage/lcov-report/src/date-time/helpers/index.ts.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coverage/lcov-report/src/date-time/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coverage/lcov-report/src/date-time/index.ts.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coverage/lcov-report/src/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coverage/lcov-report/src/index.ts.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coverage/lcov-report/src/jscript/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coverage/lcov-report/src/jscript/index.ts.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coverage/lcov-report/src/math/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coverage/lcov-report/src/math/index.ts.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coverage/lcov.info" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jscript/log.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/arrays/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/arrays/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/arrays/spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/arrays/spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jscript/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/jscript/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jscript/spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/jscript/spec.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +56,7 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="Jest.All Tests">
+  <component name="RunManager" selected="Jest.object">
     <configuration name="All Tests" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -88,48 +65,6 @@
       <jest-options value="--coverage" />
       <envs />
       <scope-kind value="ALL" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Arrays.hd([1] =&gt; 1" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/arrays/spec.ts" />
-      <test-names>
-        <test-name value="Arrays" />
-        <test-name value="hd([1] =&gt; 1" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="Arrays.hd([] =&gt; raise" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/arrays/spec.ts" />
-      <test-names>
-        <test-name value="Arrays" />
-        <test-name value="hd([] =&gt; raise" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="Arrays.tl([1] =&gt; []" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/arrays/spec.ts" />
-      <test-names>
-        <test-name value="Arrays" />
-        <test-name value="tl([1] =&gt; []" />
-      </test-names>
       <method v="2" />
     </configuration>
     <configuration name="Arrays.tl([] =&gt; raise" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
@@ -146,31 +81,68 @@
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="spec.ts (3)" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="isEmptyObject.object " type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/jscript/spec.ts" />
+      <test-names>
+        <test-name value="isEmptyObject" />
+        <test-name value="object " />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="log.spec.ts" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="TEST_FILE" />
-      <test-file value="$PROJECT_DIR$/src/arrays/spec.ts" />
+      <test-file value="$PROJECT_DIR$/src/jscript/log.spec.ts" />
+      <method v="2" />
+    </configuration>
+    <configuration name="object" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/jscript/log.spec.ts" />
+      <test-names>
+        <test-name value="object" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="spec.ts" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/src/jscript/spec.ts" />
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Jest.All Tests" />
-      <item itemvalue="Jest.spec.ts (3)" />
-      <item itemvalue="Jest.Arrays.tl([1] =&gt; []" />
-      <item itemvalue="Jest.Arrays.hd([1] =&gt; 1" />
-      <item itemvalue="Jest.Arrays.hd([] =&gt; raise" />
       <item itemvalue="Jest.Arrays.tl([] =&gt; raise" />
+      <item itemvalue="Jest.isEmptyObject.object " />
+      <item itemvalue="Jest.spec.ts" />
+      <item itemvalue="Jest.log.spec.ts" />
+      <item itemvalue="Jest.object" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest.object" />
+        <item itemvalue="Jest.log.spec.ts" />
+        <item itemvalue="Jest.spec.ts" />
+        <item itemvalue="Jest.isEmptyObject.object " />
         <item itemvalue="Jest.Arrays.tl([] =&gt; raise" />
-        <item itemvalue="Jest.Arrays.hd([] =&gt; raise" />
-        <item itemvalue="Jest.Arrays.hd([1] =&gt; 1" />
-        <item itemvalue="Jest.Arrays.tl([1] =&gt; []" />
-        <item itemvalue="Jest.spec.ts (3)" />
       </list>
     </recent_temporary>
   </component>
@@ -194,7 +166,9 @@
       <workItem from="1599925818572" duration="430000" />
       <workItem from="1599926753801" duration="47000" />
       <workItem from="1600230155981" duration="31000" />
-      <workItem from="1600913098789" duration="2094000" />
+      <workItem from="1600913098789" duration="2427000" />
+      <workItem from="1601885214449" duration="59000" />
+      <workItem from="1602096245812" duration="10533000" />
     </task>
     <servers />
   </component>
@@ -221,100 +195,113 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="184" y="115" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1599151992054" />
-    <state x="100" y="174" width="1240" height="559" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1599149921127">
+    <state x="100" y="174" width="1240" height="559" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1602134429379">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="100" y="174" width="1240" height="559" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.23.1440.877@0.23.1440.877" timestamp="1599149921127" />
-    <state width="1358" height="192" key="GridCell.Tab.0.bottom" timestamp="1600918260616">
+    <state x="100" y="174" width="1240" height="559" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.23.1440.877@0.23.1440.877" timestamp="1602134429379" />
+    <state width="1379" height="192" key="GridCell.Tab.0.bottom" timestamp="1602149772981">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1358" height="192" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1600918260616" />
-    <state width="1358" height="192" key="GridCell.Tab.0.center" timestamp="1600918260615">
+    <state width="1379" height="192" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1602149772981" />
+    <state width="1379" height="192" key="GridCell.Tab.0.center" timestamp="1602149772980">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1358" height="192" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1600918260615" />
-    <state width="1358" height="192" key="GridCell.Tab.0.left" timestamp="1600918260614">
+    <state width="1379" height="192" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1602149772980" />
+    <state width="1379" height="192" key="GridCell.Tab.0.left" timestamp="1602149772969">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1358" height="192" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1600918260614" />
-    <state width="1358" height="192" key="GridCell.Tab.0.right" timestamp="1600918260616">
+    <state width="1379" height="192" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1602149772969" />
+    <state width="1379" height="192" key="GridCell.Tab.0.right" timestamp="1602149772980">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1358" height="192" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1600918260616" />
-    <state width="1379" height="240" key="GridCell.Tab.1.bottom" timestamp="1599926248779">
+    <state width="1379" height="192" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1602149772980" />
+    <state width="1379" height="240" key="GridCell.Tab.1.bottom" timestamp="1602141719694">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1379" height="240" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1599926248779" />
-    <state width="1379" height="240" key="GridCell.Tab.1.center" timestamp="1599926248778">
+    <state width="1379" height="240" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1602141719694" />
+    <state width="1379" height="240" key="GridCell.Tab.1.center" timestamp="1602141719693">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1379" height="240" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1599926248778" />
-    <state width="1379" height="240" key="GridCell.Tab.1.left" timestamp="1599926248778">
+    <state width="1379" height="240" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1602141719693" />
+    <state width="1379" height="240" key="GridCell.Tab.1.left" timestamp="1602141719692">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1379" height="240" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1599926248778" />
-    <state width="1379" height="240" key="GridCell.Tab.1.right" timestamp="1599926248779">
+    <state width="1379" height="240" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1602141719692" />
+    <state width="1379" height="240" key="GridCell.Tab.1.right" timestamp="1602141719693">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1379" height="240" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1599926248779" />
-    <state width="1379" height="240" key="GridCell.Tab.2.bottom" timestamp="1599926248780">
+    <state width="1379" height="240" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1602141719693" />
+    <state width="1379" height="240" key="GridCell.Tab.2.bottom" timestamp="1602141719696">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1379" height="240" key="GridCell.Tab.2.bottom/0.23.1440.877@0.23.1440.877" timestamp="1599926248780" />
-    <state width="1379" height="240" key="GridCell.Tab.2.center" timestamp="1599926248780">
+    <state width="1379" height="240" key="GridCell.Tab.2.bottom/0.23.1440.877@0.23.1440.877" timestamp="1602141719696" />
+    <state width="1379" height="240" key="GridCell.Tab.2.center" timestamp="1602141719695">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1379" height="240" key="GridCell.Tab.2.center/0.23.1440.877@0.23.1440.877" timestamp="1599926248780" />
-    <state width="1379" height="240" key="GridCell.Tab.2.left" timestamp="1599926248780">
+    <state width="1379" height="240" key="GridCell.Tab.2.center/0.23.1440.877@0.23.1440.877" timestamp="1602141719695" />
+    <state width="1379" height="240" key="GridCell.Tab.2.left" timestamp="1602141719694">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1379" height="240" key="GridCell.Tab.2.left/0.23.1440.877@0.23.1440.877" timestamp="1599926248780" />
-    <state width="1379" height="240" key="GridCell.Tab.2.right" timestamp="1599926248780">
+    <state width="1379" height="240" key="GridCell.Tab.2.left/0.23.1440.877@0.23.1440.877" timestamp="1602141719694" />
+    <state width="1379" height="240" key="GridCell.Tab.2.right" timestamp="1602141719695">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1379" height="240" key="GridCell.Tab.2.right/0.23.1440.877@0.23.1440.877" timestamp="1599926248780" />
-    <state width="1379" height="240" key="GridCell.Tab.3.bottom" timestamp="1599926248781">
+    <state width="1379" height="240" key="GridCell.Tab.2.right/0.23.1440.877@0.23.1440.877" timestamp="1602141719695" />
+    <state width="1379" height="240" key="GridCell.Tab.3.bottom" timestamp="1602141719698">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1379" height="240" key="GridCell.Tab.3.bottom/0.23.1440.877@0.23.1440.877" timestamp="1599926248781" />
-    <state width="1379" height="240" key="GridCell.Tab.3.center" timestamp="1599926248781">
+    <state width="1379" height="240" key="GridCell.Tab.3.bottom/0.23.1440.877@0.23.1440.877" timestamp="1602141719698" />
+    <state width="1379" height="240" key="GridCell.Tab.3.center" timestamp="1602141719697">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1379" height="240" key="GridCell.Tab.3.center/0.23.1440.877@0.23.1440.877" timestamp="1599926248781" />
-    <state width="1379" height="240" key="GridCell.Tab.3.left" timestamp="1599926248781">
+    <state width="1379" height="240" key="GridCell.Tab.3.center/0.23.1440.877@0.23.1440.877" timestamp="1602141719697" />
+    <state width="1379" height="240" key="GridCell.Tab.3.left" timestamp="1602141719697">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1379" height="240" key="GridCell.Tab.3.left/0.23.1440.877@0.23.1440.877" timestamp="1599926248781" />
-    <state width="1379" height="240" key="GridCell.Tab.3.right" timestamp="1599926248781">
+    <state width="1379" height="240" key="GridCell.Tab.3.left/0.23.1440.877@0.23.1440.877" timestamp="1602141719697" />
+    <state width="1379" height="240" key="GridCell.Tab.3.right" timestamp="1602141719698">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1379" height="240" key="GridCell.Tab.3.right/0.23.1440.877@0.23.1440.877" timestamp="1599926248781" />
+    <state width="1379" height="240" key="GridCell.Tab.3.right/0.23.1440.877@0.23.1440.877" timestamp="1602141719698" />
     <state x="487" y="163" key="RollbackChangesDialog" timestamp="1599150016669">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="487" y="163" key="RollbackChangesDialog/0.23.1440.877@0.23.1440.877" timestamp="1599150016669" />
+    <state width="500" height="445" key="SwitcherDM" timestamp="1602149765494">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="500" height="445" key="SwitcherDM/0.23.1440.877@0.23.1440.877" timestamp="1602149765494" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/jscript/spec.ts</url>
+          <url>file://$PROJECT_DIR$/src/jscript/log.spec.ts</url>
           <line>36</line>
-          <option name="timeStamp" value="1" />
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/jscript/index.ts</url>
+          <line>78</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/gen_funcs$spec_ts__3_.info" NAME="spec.ts (3) Coverage Results" MODIFIED="1600915284760" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/gen_funcs$clone_objects.info" NAME="clone objects Coverage Results" MODIFIED="1599149348751" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/gen_funcs$Rerun_Failed_Tests.info" NAME="Rerun Failed Tests Coverage Results" MODIFIED="1599149735959" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/gen_funcs$spec_ts.info" NAME="spec.ts Coverage Results" MODIFIED="1599149628629" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/gen_funcs$Arrays_tl_______raise.info" NAME="Arrays.tl([] =&gt; raise Coverage Results" MODIFIED="1600918439400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/gen_funcs$spec_ts__1_.info" NAME="spec.ts (1) Coverage Results" MODIFIED="1599152385902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/gen_funcs$Arrays_tl__1_______.info" NAME="Arrays.tl([1] =&gt; [] Coverage Results" MODIFIED="1600917915784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/gen_funcs$Arrays_hd_______raise.info" NAME="Arrays.hd([] =&gt; raise Coverage Results" MODIFIED="1600918404133" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/gen_funcs$All_Tests.info" NAME="All Tests Coverage Results" MODIFIED="1599152051694" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/gen_funcs$spec_ts__2_.info" NAME="spec.ts (2) Coverage Results" MODIFIED="1599152395228" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/gen_funcs$Arrays_hd__1_____1.info" NAME="Arrays.hd([1] =&gt; 1 Coverage Results" MODIFIED="1600918071602" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/gen_funcs$spec_ts__3_.info" NAME="spec.ts (3) Coverage Results" MODIFIED="1600915284760" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/gen_funcs$spec_ts.info" NAME="spec.ts Coverage Results" MODIFIED="1599149628629" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/gen_funcs$Arrays_tl__1_______.info" NAME="Arrays.tl([1] =&gt; [] Coverage Results" MODIFIED="1600917915784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/gen_funcs$spec_ts__2_.info" NAME="spec.ts (2) Coverage Results" MODIFIED="1599152395228" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/gen_funcs$clone_objects_are_equal_initially.info" NAME="clone objects.are equal initially Coverage Results" MODIFIED="1599149256669" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/gen_funcs$Arrays_addarrys__1___2_3______3_3__.info" NAME="Arrays.addarrys([1],[2,3] =&gt; [3,3]) Coverage Results" MODIFIED="1599152195327" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>

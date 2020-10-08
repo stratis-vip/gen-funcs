@@ -10,26 +10,37 @@ export const isEmptyObject = (obj: any): boolean => {
   return Object.keys(obj).length === 0
 }
 
-export const dbg = (msg: any, title?:string) => {
-  if (process.env.NODE_ENV !== 'production') {
-    if (msg === undefined) {
-      return constructDebug(msg)
-    }
-    if (checkObject(msg)) {
-      return constructDebug(msg, undefined, `\n${JSON.stringify(msg, null, 2)}`)
-    } else {
-      if (msg === null) {
-        return constructDebug(msg, undefined,`null`)
+export const identify = (what:any):string => {
+  switch (typeof what){
+    case 'string': return 'string'
+    case 'number': return 'number'
+    case 'object': {
+      if (what === null ) return 'null'
+      if (what === undefined) return 'undefined'
+      if (what instanceof Array){
+        return 'array'
       }
     }
-    switch (typeof msg) {
-      case 'boolean': return constructDebug(msg, undefined, (msg ? 'TRUE' : 'FALSE'))
-      default: return constructDebug(msg, title)
-    }
+    default: return typeof what
+  }
+
+}
+
+export interface DebugOptions {
+  date?:string
+  color?:string
+  showType?:boolean
+  json?:boolean
+  showFileName?:boolean
+}
+
+export const dbgFactory = (title:string, msg: any, options:DebugOptions) => {
+  if (process.env.NODE_ENV !== 'production') {
+    return constructDebug(title, msg, options)
   }
 }
 
-const constructDebug = (value: any, title?:string, messageOverride?: string) => {
+const constructDebug = (title:string, value: any, options:DebugOptions) => {
   const Reset = "\x1b[0m"
   const Bright = "\x1b[1m"
   // const Dim = "\x1b[2m"
@@ -55,10 +66,39 @@ const constructDebug = (value: any, title?:string, messageOverride?: string) => 
   // const BgMagenta = "\x1b[45m"
   // const BgCyan = "\x1b[46m"
   // const BgWhite = "\x1b[47m"
+  const {date,color,showType, json,showFileName} = options
+  const info = makeInfo(title, {date,color,showFileName})//`${FgGreen}DEBUG INFO ${new Date().toLocaleTimeString()}: `
+  const objectType = makeObject(value,{showType,json})//`${Reset}${Bright}(${(typeof value).toUpperCase()})${Reset}`
+  return info + objectType
+}
 
-  const info = `${FgGreen}DEBUG INFO ${new Date().toLocaleTimeString()}: `
-  const objectType = `${Reset}${Bright}(${(typeof value).toUpperCase()})${Reset}`
-  const msg = messageOverride ? messageOverride : value ? String(value) : ''
-  const titlePart = title ? ` ${FgYellow}${title}: ${Reset}` : ' : '
-  return console.log(info + objectType + titlePart + msg)
+export const makeInfo = (title:string, options:DebugOptions):string =>{
+  const {date, color, showFileName} = options
+  const dateString = (date ? new Date(date) : new Date()).toLocaleTimeString('el-GR', {hour12:false})
+  const colorString = color ? color : '[32m';
+  const fileString = showFileName ? `@${__filename}` : ''
+  return `${colorString}${title}${fileString}> ${dateString} - `
+}
+
+export const makeObject = (obj:any, options:DebugOptions) =>{
+  const Reset = "[0m"
+  const Bright = "[1m"
+  const {showType, json} = options
+  const objType = showType? `(${identify(obj).toUpperCase()}): ` : ''
+  const objString = json ? JSON.stringify(obj) : `${obj}`
+  return `${Reset}${Bright}${objType}${objString}${Reset}`
+}
+
+export const info = (message:string, showFileName:boolean = false) =>{
+  console.log(dbgFactory('INFO',message, {showFileName}))
+}
+
+export const error = (errorMessage:any) =>{
+  const FgRed = "\x1b[31m"
+  console.log(dbgFactory('ERROR',errorMessage, {showFileName:true,color:FgRed}))
+}
+
+export const dbg = (value:any, json:boolean = true, showFileName:boolean = false) =>{
+  const FgCyan = "\x1b[36m"
+  console.log(dbgFactory('DEBUG',value, {color:FgCyan,showType:true,showFileName, json}))
 }
