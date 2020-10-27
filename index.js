@@ -31,4 +31,6 @@ Object.defineProperty(exports, "extractDate", { enumerable: true, get: function 
 Object.defineProperty(exports, "extractTime", { enumerable: true, get: function () { return date_time_1.extractTime; } });
 Object.defineProperty(exports, "isEqualJsonDate", { enumerable: true, get: function () { return date_time_1.isEqualJsonDate; } });
 Object.defineProperty(exports, "getYearToTwodigits", { enumerable: true, get: function () { return date_time_1.getYearToTwodigits; } });
+var algorithms_1 = require("./algorithms");
+Object.defineProperty(exports, "factors", { enumerable: true, get: function () { return algorithms_1.factors; } });
 //# sourceMappingURL=index.js.map

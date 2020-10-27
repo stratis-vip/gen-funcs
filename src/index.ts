@@ -19,3 +19,5 @@ export {
   isEqualJsonDate,
   getYearToTwodigits
 } from "./date-time"
+
+export {factors} from "./algorithms"

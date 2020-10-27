@@ -19,7 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="556abf5b-2fae-48f0-afa3-179e642773f8" name="Default Changelist" comment="" />
+    <list default="true" id="556abf5b-2fae-48f0-afa3-179e642773f8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -126,9 +128,9 @@
       <item itemvalue="Jest.All Tests" />
       <item itemvalue="Jest.Arrays.tl([] =&gt; raise" />
       <item itemvalue="Jest.isEmptyObject.object " />
-      <item itemvalue="Jest.spec.ts" />
       <item itemvalue="Jest.log.spec.ts" />
       <item itemvalue="Jest.object" />
+      <item itemvalue="Jest.spec.ts" />
     </list>
     <recent_temporary>
       <list>
@@ -163,6 +165,7 @@
       <workItem from="1600913098789" duration="2427000" />
       <workItem from="1601885214449" duration="59000" />
       <workItem from="1602096245812" duration="10894000" />
+      <workItem from="1602150839563" duration="133000" />
     </task>
     <servers />
   </component>
@@ -272,13 +275,11 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/jscript/log.spec.ts</url>
           <line>36</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/jscript/index.ts</url>
           <line>78</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
